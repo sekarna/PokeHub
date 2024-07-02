@@ -9,14 +9,18 @@ export default function PokemonList() {
     queryKey: ['pokemons'],
     queryFn: fetchAllPokemon,
   });
-  console.log('query', data);
 
   return (
     <View style={styles.container}>
       <FlatList
         data={data}
         keyExtractor={item => item.name}
-        renderItem={({item}) => <PokemonCard url={item.url} name={item.name} />}
+        renderItem={({item}) => (
+          <PokemonCard
+            url={item.url}
+            name={item.name}
+          />
+        )}
         style={styles.list}
       />
     </View>

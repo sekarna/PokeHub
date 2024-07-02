@@ -25,6 +25,7 @@ export async function fetchPokemonDetails(url: string): Promise<Pokemon> {
     return data as Pokemon;
   } catch (error) {
     console.error('Fetch error:', error);
-    throw error; // Re-lancer l'erreur pour une gestion ultérieure
+    throw error;
   }
 }
+

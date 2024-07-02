@@ -5,8 +5,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import PokemonList from '../components/PokemonList';
 
 const PokemonListScreen = () => {
-  const navigation = useNavigation();
-
   return (
     <LinearGradient colors={['#1c1c1c', '#000000']} style={styles.container}>
       <PokemonList />
@@ -20,5 +18,4 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
- 
 });

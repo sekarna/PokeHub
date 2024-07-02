@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import {Pokemon} from '../utils/pokemonInterface';
-import {formatNumber, typesColors} from '../utils/constants';
+import {formatNumber, typesInfo} from '../utils/constants';
 import {useQuery} from '@tanstack/react-query';
-import { fetchPokemonDetails } from '../services/pokemonService';
+import {fetchPokemonDetails} from '../services/pokemonService';
+import {useNavigation} from '@react-navigation/native';
 
 interface PokemonCardProps {
   name: string;
@@ -11,40 +12,45 @@ interface PokemonCardProps {
 }
 
 export function PokemonCard({url, name}: PokemonCardProps) {
+  const navigation = useNavigation();
   const {data, isLoading, error} = useQuery<Pokemon>({
     queryKey: ['pokemon', url],
     queryFn: () => fetchPokemonDetails(url),
   });
-  console.log('details', data);
-  
 
   if (!data) return null;
 
-  const backgroundColor = typesColors[data.types[0].type.name] || 'gray';
+  const backgroundColor = typesInfo[data.types[0].type.name].color || 'gray';
   const hpStat = data.stats.find(stat => stat.stat.name === 'hp');
   const hp = hpStat ? hpStat.base_stat : 0;
 
   return (
-    <View style={[styles.card, {backgroundColor, borderColor: '#eee77d'}]}>
-      <View style={styles.cardHeader}>
-        <View>
-          <Text style={styles.name}>
-            {data.name.replace(/^\w/, c => c.toUpperCase())}
-          </Text>
-          <View style={styles.infos}>
-            <Text style={styles.pv}>PV</Text>
-            <Text style={styles.hp}>{hp}</Text>
-            <Image style={styles.poke} source={require('../assets/poke.png')} />
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Details', {url, name})}>
+      <View style={[styles.card, {backgroundColor, borderColor: '#eee77d'}]}>
+        <View style={styles.cardHeader}>
+          <View>
+            <Text style={styles.name}>
+              {data.name.replace(/^\w/, c => c.toUpperCase())}
+            </Text>
+            <View style={styles.infos}>
+              <Text style={styles.pv}>PV</Text>
+              <Text style={styles.hp}>{hp}</Text>
+              <Image
+                style={styles.poke}
+                source={require('../assets/poke.png')}
+              />
+            </View>
           </View>
+          <Image
+            source={{
+              uri: data?.sprites?.other['official-artwork']?.front_default,
+            }}
+            style={styles.image}
+          />
         </View>
-        <Image
-          source={{
-            uri: data?.sprites?.other['official-artwork']?.front_default,
-          }}
-          style={styles.image}
-        />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({
