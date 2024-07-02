@@ -1,79 +1,85 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# PokeHub React Native App
 
-# Getting Started
+## Demo Video
+![Watch the demo video](./src/assets/demo.mov)
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Screenshots
+![Home Screen](./src/assets/allPokemons.png)
+![Pokemon Details](./src/assets/detailsPokemon.png)
 
-## Step 1: Start the Metro Server
+## Description
+Cette application est un Pokédex développé en React Native, permettant d'afficher une liste de Pokémon avec une gestion de la pagination. Lorsque l'utilisateur clique sur un Pokémon, les détails de ce dernier sont affichés.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Fonctionnalités
+- Affichage de tous les Pokémon avec pagination
+- Affichage des détails d'un Pokémon sélectionné
+- Utilisation de React Query pour la gestion de l'état et le cache
+- Utilisation de React Navigation pour la gestion de la navigation entre les écrans
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Technologies Utilisées
+- **React Native** : pour le développement cross-platform (iOS et Android) en un seul codebase.
+- **TypeScript** : pour la sécurité et la clarté du code.
+- **React Query** : pour la gestion de l'état de l'application et du cache.
+- **React Navigation** : pour une navigation fluide entre les différents écrans de l'application.
+- **PokeAPI** : une API externe riche en données sur les Pokémon.
 
-```bash
-# using npm
-npm start
+## Pourquoi ces technologies ?
+- **React Native** : permet un développement rapide pour plusieurs plateformes avec une seule base de code.
+- **TypeScript** : aide à éviter les erreurs et rend le code plus maintenable et lisible.
+- **React Query** : simplifie la gestion des requêtes HTTP et améliore la performance de l'application grâce à son système de cache intégré.
+- **React Navigation** : offre une navigation intuitive et facile à implémenter, essentielle pour une application multi-écrans.
 
-# OR using Yarn
-yarn start
+## Difficultés Rencontrées
+- **Configuration initiale** : Le démarrage avec React Native CLI peut être complexe, avec plusieurs bugs rencontrés lors de l'installation.
+- **Conception de l'application** : Trouver un design agréable et fonctionnel pour l'application tout en évitant qu'elle ne paraisse trop simple.
+- **Gestion des données** : L'API PokeAPI est très riche en données. Il a été nécessaire de sélectionner les informations pertinentes à afficher sans surcharger l'utilisateur.
+- **Première utilisation de React Query** : Il a fallu se documenter sur cette technologie, ce qui a pris du temps.
+
+## Améliorations Futures
+- **Système de filtre** : Permettre aux utilisateurs de rechercher des Pokémon spécifiques selon des critères définis.
+- **Favoris** : Ajouter la possibilité de sauvegarder ses Pokémon préférés.
+- **Notifications** : Informer les utilisateurs des nouveaux Pokémon ajoutés ou des mises à jour.
+
+## Installation et Lancement
+
+### Prérequis
+- Node.js
+- npm ou yarn
+- Expo CLI (optionnel, si vous utilisez Expo)
+- Android Studio (pour émuler un appareil Android)
+- Xcode (pour émuler un appareil iOS)
+
+### Étapes d'installation
+
+Cloner le dépôt
+```sh
+git clone https://github.com/sekarna/PokeHub.git
+cd PokeHub
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+Installer les dépendances
+```sh
+npm install
+# ou
+yarn install
 ```
 
-### For iOS
+Lancer l'application
+Pour démarrer l'application sur un émulateur Android ou iOS, utilisez les commandes suivantes :
 
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+#### Android
+```sh
+npx react-native run-android
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+#### IOS
+```sh
+npx react-native run-ios
+```
+### Utilisation
+- **Écran principal** : affiche une liste paginée de Pokémon.
+- **Cliquez sur un Pokémon** : pour afficher les détails du Pokémon sélectionné.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### Auteur
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+[Bilel Sekarna](https://github.com/sekarna) Github.
