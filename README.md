@@ -1,8 +1,5 @@
 # PokeHub React Native App
 
-## Demo Video
-![Watch the demo video](./src/assets/demo.mov)
-
 ## Screenshots
 ![Simulator Screenshot - iPhone 15 - 2024-07-02 at 12 42 28](https://github.com/sekarna/PokeHub/assets/161050739/c63ef6ae-52bc-4114-81b9-78aab1063a80)
 ![Simulator Screenshot - iPhone 15 - 2024-07-02 at 12 42 42](https://github.com/sekarna/PokeHub/assets/161050739/3e850022-1596-4ea3-971d-03a247bd3f81)
