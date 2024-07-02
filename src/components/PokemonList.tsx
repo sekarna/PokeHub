@@ -1,26 +1,38 @@
-import {FlatList, StyleSheet, View, Text} from 'react-native';
+import {FlatList, StyleSheet, View, Text, ActivityIndicator} from 'react-native';
 import {fetchAllPokemon} from '../services/pokemonService';
 import {AllPokemon} from '../utils/pokemonInterface';
 import {PokemonCard} from './PokemonCard';
-import {useQuery} from '@tanstack/react-query';
+import {useInfiniteQuery, useQuery} from '@tanstack/react-query';
 
 export default function PokemonList() {
-  const {data, isLoading, error} = useQuery<AllPokemon>({
-    queryKey: ['pokemons'],
-    queryFn: fetchAllPokemon,
-  });
+  const {data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage} =
+    useInfiniteQuery({
+      queryKey: ['pokemons'],
+      queryFn: fetchAllPokemon,
+      getNextPageParam: lastPage => lastPage.next,
+    });
+
+  const handleLoadMore = () => {
+    if (hasNextPage) {
+      fetchNextPage();
+    }
+  };
+
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={data}
+        data={data?.pages.flatMap(page => page.results) ?? []}
+        renderItem={({item}) => <PokemonCard url={item.url} name={item.name} />}
         keyExtractor={item => item.name}
-        renderItem={({item}) => (
-          <PokemonCard
-            url={item.url}
-            name={item.name}
-          />
-        )}
+        onEndReached={handleLoadMore}
+        ListFooterComponent={() =>
+          isFetchingNextPage ? <ActivityIndicator /> : null
+        }
         style={styles.list}
       />
     </View>
