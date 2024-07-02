@@ -4,8 +4,8 @@
 ![Watch the demo video](./src/assets/demo.mov)
 
 ## Screenshots
-![Home Screen](./src/assets/allPokemons.png)
-![Pokemon Details](./src/assets/detailsPokemon.png)
+![Simulator Screenshot - iPhone 15 - 2024-07-02 at 12 42 28](https://github.com/sekarna/PokeHub/assets/161050739/c63ef6ae-52bc-4114-81b9-78aab1063a80)
+![Simulator Screenshot - iPhone 15 - 2024-07-02 at 12 42 42](https://github.com/sekarna/PokeHub/assets/161050739/3e850022-1596-4ea3-971d-03a247bd3f81)
 
 ## Description
 Cette application est un Pokédex développé en React Native, permettant d'afficher une liste de Pokémon avec une gestion de la pagination. Lorsque l'utilisateur clique sur un Pokémon, les détails de ce dernier sont affichés.
